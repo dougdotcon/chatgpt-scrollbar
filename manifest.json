@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "ChatGPT Scrollbar Fix",
+  "version": "1.0",
+  "description": "Adiciona barra de rolagem nas telas do ChatGPT onde não aparece.",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chatgpt.com/*"
+      ],
+      "js": ["content.js"]
+    }
+  ]
+} 
