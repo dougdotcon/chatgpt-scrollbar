@@ -1,27 +1,32 @@
 # ChatGPT Scrollbar Fix
 
-Adds a scrollbar to ChatGPT screens where it normally doesn't appear, improving navigation and usability.
-
-## Why this extension?
-By default, ChatGPT does not display a proper scrollbar in some areas of its interface, making it difficult to view long content. Since this feature is not available natively, I decided to create this extension to solve the problem and make the experience smoother.
+A browser extension designed to restore and customize scrollbar functionality on ChatGPT's web interface. It ensures consistent navigation and improved usability by injecting a persistent, modern scrollbar into the main content container.
 
 ## Features
-- Displays a vertical scrollbar in the main ChatGPT container.
-- Applies a clean and modern visual style to the scrollbar.
-- Works automatically when accessing or navigating between ChatGPT pages.
+
+- **Visibility Restoration**: Injects a functional vertical scrollbar into the main ChatGPT container where native scrolling is often hidden or inconsistent.
+- **Modern Styling**: Applies a clean, custom visual style to the scrollbar to match the aesthetic of the ChatGPT interface.
+- **Dynamic DOM Handling**: Utilizes a `MutationObserver` to detect DOM changes and maintain scrollbar functionality when navigating between different chats or views.
+- **Lightweight**: Operates locally within the browser without collecting any user data or communicating with external servers.
 
 ## Installation
-1. Download or clone this repository.
-2. In Chrome, go to `chrome://extensions/`.
-3. Enable "Developer mode".
-4. Click "Load unpacked" and select the project folder.
 
-## How it works
-The extension injects a script that identifies the main ChatGPT container and applies styles to show and customize the scrollbar. A DOM mutation observer ensures the scrollbar remains visible even when navigating between different ChatGPT screens.
+To install this extension manually in Chrome (or Chromium-based browsers):
 
-## Notes
-- Does not collect any user data.
-- Works only on https://chatgpt.com/.
+1. Clone or download this repository to your local machine.
+2. Open Chrome and navigate to `chrome://extensions/`.
+3. Toggle **Developer mode** in the top right corner.
+4. Click **Load unpacked**.
+5. Select the root folder of this project.
+
+## Technical Details
+
+The extension works by injecting a Content Script into `https://chatgpt.com/`. This script:
+
+1. Identifies the specific DOM element used for the main conversation container.
+2. Injects CSS rules to override existing `overflow` properties and style the scrollbar tracks and thumbs.
+3. Initializes a `MutationObserver` to watch for changes in the DOM structure (such as route changes or new message loading) to re-apply styles if the container is re-rendered.
 
 ## License
-MIT 
+
+MIT License. Feel free to use and modify as needed.
